@@ -29,6 +29,9 @@ class PrototypesController < ApplicationController
   end
 
   def edit
+    unless user_signed_in? && current_user.id == @prototype.user.id
+      redirect_to root_path
+    end
   end
 
 def update
